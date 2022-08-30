@@ -8,11 +8,12 @@ def main():
         type=argparse.FileType('r')
     )
     args = argparser.parse_args()
-    print(args)
+
     for line in args.mas:
         chrom, read_name, read_str, pos = line.split('\t')
-        # Output as Simple-SAM
-
+        correct_pos = str(int(pos.strip())+1)
+        cigar = str(len(read_str)) + "M"
+        print(f"{read_name}\t{chrom}\t{correct_pos}\t{cigar}\t{read_str}")
 
 if __name__ == '__main__':
     main()
