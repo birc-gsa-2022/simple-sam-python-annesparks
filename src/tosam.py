@@ -9,7 +9,7 @@ def main():
     )
     args = argparser.parse_args()
 
-    for line in args.mas.readlines():
+    for line in args.mas:
         chrom, read_name, read_str, pos = line.split('\t')
         correct_pos = str(int(pos.strip())+1)
         cigar = str(len(read_str)) + "M"
